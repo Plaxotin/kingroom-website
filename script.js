@@ -270,13 +270,6 @@ const activateNavOnScroll = () => {
 window.addEventListener('scroll', activateNavOnScroll);
 
 // Calculator functionality
-const optionCards = document.querySelectorAll('.option-card');
-const areaInput = document.getElementById('area-input');
-const selectedTypeEl = document.getElementById('selected-type');
-const selectedAreaEl = document.getElementById('selected-area');
-const pricePerMeterEl = document.getElementById('price-per-meter');
-const totalPriceEl = document.getElementById('total-price');
-
 let currentType = 'apartment';
 let currentPrice = 7000;
 let currentArea = 0;
@@ -288,69 +281,71 @@ function formatNumber(num) {
 
 // Function to calculate total price
 function calculateTotal() {
-    if (currentArea > 0) {
-        const total = currentArea * currentPrice;
-        totalPriceEl.textContent = formatNumber(total) + ' ₽';
-        selectedAreaEl.textContent = currentArea + ' м²';
-    } else {
-        totalPriceEl.textContent = '0 ₽';
-        selectedAreaEl.textContent = '— м²';
+    const totalPriceEl = document.getElementById('total-price');
+    const selectedAreaEl = document.getElementById('selected-area');
+    
+    if (totalPriceEl && selectedAreaEl) {
+        if (currentArea > 0) {
+            const total = currentArea * currentPrice;
+            totalPriceEl.textContent = formatNumber(total) + ' ₽';
+            selectedAreaEl.textContent = currentArea + ' м²';
+        } else {
+            totalPriceEl.textContent = '0 ₽';
+            selectedAreaEl.textContent = '— м²';
+        }
     }
 }
 
-// Option card click handler
-optionCards.forEach(card => {
-    card.addEventListener('click', function() {
-        // Remove active class from all cards
-        optionCards.forEach(c => {
-            c.classList.remove('active');
-            c.style.transform = 'translateZ(0)';
-        });
-        
-        // Add active class to clicked card
-        this.classList.add('active');
-        this.style.transform = 'translateZ(0)';
-        
-        // Get data from card
-        currentType = this.getAttribute('data-type');
-        currentPrice = parseInt(this.getAttribute('data-price'));
-        
-        // Update display
-        selectedTypeEl.textContent = currentType === 'apartment' ? 'Квартира' : 'Дом';
-        pricePerMeterEl.textContent = formatNumber(currentPrice) + ' ₽';
-        
-        // Recalculate total
-        calculateTotal();
-    });
-});
-
-// Stabilize calculator cards on scroll
-let ticking = false;
-function stabilizeCalculator() {
-    if (!ticking) {
-        requestAnimationFrame(function() {
-            optionCards.forEach(card => {
-                if (card.classList.contains('active')) {
-                    card.style.transform = 'translateZ(0)';
-                } else {
-                    card.style.transform = 'translateZ(0)';
-                }
+// Initialize calculator after page loads
+window.addEventListener('load', function() {
+    const optionCards = document.querySelectorAll('.option-card');
+    const areaInput = document.getElementById('area-input');
+    const selectedTypeEl = document.getElementById('selected-type');
+    const pricePerMeterEl = document.getElementById('price-per-meter');
+    
+    console.log('Calculator init - cards found:', optionCards.length);
+    
+    // Option card click handler
+    optionCards.forEach(card => {
+        card.addEventListener('click', function() {
+            console.log('Card clicked:', this.getAttribute('data-type'));
+            
+            // Remove active class from all cards
+            optionCards.forEach(c => {
+                c.classList.remove('active');
             });
-            ticking = false;
+            
+            // Add active class to clicked card
+            this.classList.add('active');
+            
+            // Get data from card
+            currentType = this.getAttribute('data-type');
+            currentPrice = parseInt(this.getAttribute('data-price'));
+            
+            console.log('Updated - Type:', currentType, 'Price:', currentPrice);
+            
+            // Update display
+            if (selectedTypeEl) {
+                selectedTypeEl.textContent = currentType === 'apartment' ? 'Квартира' : 'Дом';
+            }
+            if (pricePerMeterEl) {
+                pricePerMeterEl.textContent = formatNumber(currentPrice) + ' ₽';
+            }
+            
+            // Recalculate total
+            calculateTotal();
         });
-        ticking = true;
-    }
-}
-
-window.addEventListener('scroll', stabilizeCalculator, { passive: true });
-
-// Area input handler
-if (areaInput) {
-    areaInput.addEventListener('input', function() {
-        currentArea = parseFloat(this.value) || 0;
-        calculateTotal();
     });
-}
+    
+    // Area input handler
+    if (areaInput) {
+        areaInput.addEventListener('input', function() {
+            currentArea = parseFloat(this.value) || 0;
+            console.log('Area changed:', currentArea);
+            calculateTotal();
+        });
+    }
+});
 
 // Handle window resize for better responsive behavior
 let resizeTimer;
@@ -412,6 +407,106 @@ document.addEventListener('DOMContentLoaded', function() {
         if (teamImage.complete && teamImage.naturalHeight === 0) {
             teamImage.dispatchEvent(new Event('error'));
         }
+    }
+});
+
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+const portfolioItemsForLightbox = document.querySelectorAll('.portfolio-item');
+
+let currentImageIndex = 0;
+const images = [];
+
+// Collect all portfolio images
+portfolioItemsForLightbox.forEach((item, index) => {
+    const imageDiv = item.querySelector('.portfolio-image');
+    const overlay = item.querySelector('.portfolio-overlay');
+    const title = overlay.querySelector('h4').textContent;
+    const description = overlay.querySelector('p').textContent;
+    
+    // Get background image URL
+    const bgImage = window.getComputedStyle(imageDiv).backgroundImage;
+    const imageUrl = bgImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+    
+    images.push({
+        url: imageUrl,
+        title: title,
+        description: description
+    });
+    
+    // Add click event to open lightbox
+    item.addEventListener('click', function() {
+        currentImageIndex = index;
+        openLightbox();
+    });
+    
+    // Add cursor pointer
+    item.style.cursor = 'pointer';
+});
+
+// Open lightbox
+function openLightbox() {
+    if (images[currentImageIndex]) {
+        lightboxImage.src = images[currentImageIndex].url;
+        lightboxCaption.innerHTML = `<strong>${images[currentImageIndex].title}</strong><br>${images[currentImageIndex].description}`;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Close lightbox
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Navigate to previous image
+function showPrevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    openLightbox();
+}
+
+// Navigate to next image
+function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    openLightbox();
+}
+
+// Event listeners
+if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+}
+
+if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', showPrevImage);
+}
+
+if (lightboxNext) {
+    lightboxNext.addEventListener('click', showNextImage);
+}
+
+// Close on background click
+if (lightbox) {
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+    } else if (e.key === 'ArrowLeft' && lightbox.classList.contains('active')) {
+        showPrevImage();
+    } else if (e.key === 'ArrowRight' && lightbox.classList.contains('active')) {
+        showNextImage();
     }
 });
 

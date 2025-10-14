@@ -14,7 +14,7 @@
     <header class="header" id="header">
         <nav class="nav container">
             <div class="nav__logo">
-                <span class="logo-text">KINGROOM</span>
+                <img src="дизайн/Frame 2 (1).svg" alt="KINGROOM" class="logo-img">
             </div>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -346,32 +346,32 @@
                         Наша миссия - превращать ваши мечты об идеальном доме в реальность. Мы используем 
                         только проверенные материалы, современные технологии и индивидуальный подход к каждому клиенту.
                     </p>
-                    <div class="about__features">
-                        <div class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div>
-                                <h4>Гарантия качества</h4>
-                                <p>3 года гарантии на все виды работ</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div>
-                                <h4>Прозрачная смета</h4>
-                                <p>Фиксированная цена без скрытых платежей</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div>
-                                <h4>Соблюдение сроков</h4>
-                                <p>Договорные обязательства и пени за просрочку</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="about__image">
                     <img src="дизайн/office.png" alt="Команда KINGROOM за работой" class="about__team-image">
+                </div>
+            </div>
+            <div class="about__features">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <h4>Гарантия качества</h4>
+                        <p>3 года гарантии на все виды работ</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <h4>Прозрачная смета</h4>
+                        <p>Фиксированная цена без скрытых платежей</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <h4>Соблюдение сроков</h4>
+                        <p>Договорные обязательства и пени за просрочку</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -407,7 +407,7 @@
                     <div class="form-group form-group-full">
                         <textarea class="form-input" rows="5" placeholder="Расскажите о вашем проекте"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-large">Отправить заявку</button>
+                    <button type="submit" class="btn btn-primary btn-large form-group-full">Отправить заявку</button>
                 </form>
 
                 <div class="contact__info">
@@ -475,10 +475,10 @@
         <div class="container">
             <div class="footer__content">
                 <div class="footer__section">
-                    <h3 class="footer__logo">KINGROOM</h3>
+                    <img src="дизайн/Frame 2 (1).svg" alt="KINGROOM" class="footer__logo-img">
                     <p class="footer__text">
-                        Строительство и ремонт<br>
-                        премиум-класса под ключ
+                        Подбор, строительство и ремонт<br>
+                        домов и квартир под ключ.
                     </p>
                 </div>
                 <div class="footer__section">
@@ -513,6 +513,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox__close" id="lightbox-close">&times;</span>
+        <img class="lightbox__image" id="lightbox-image" src="" alt="">
+        <div class="lightbox__caption" id="lightbox-caption"></div>
+        <button class="lightbox__prev" id="lightbox-prev">&#10094;</button>
+        <button class="lightbox__next" id="lightbox-next">&#10095;</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
