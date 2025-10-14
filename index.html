@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINGROOM - Строительство и ремонт под ключ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <span class="logo-text">KINGROOM</span>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="#calculator" class="nav__link">Калькулятор</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">Услуги</a></li>
+                    <li class="nav__item"><a href="#portfolio" class="nav__link">Портфолио</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero__container container">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    Воплощаем мечты<br>
+                    <span class="gradient-text">в реальность</span>
+                </h1>
+                <p class="hero__description">
+                    Подбор, строительство и ремонт домов и квартир под ключ.<br>
+                    Профессиональный подход к каждому проекту.
+                </p>
+                <div class="hero__buttons">
+                    <a href="#contact" class="btn btn-primary">Получить консультацию</a>
+                    <a href="#portfolio" class="btn btn-secondary">Наши работы</a>
+                </div>
+            </div>
+            <div class="hero__stats">
+                <div class="stat-item">
+                    <h3 class="stat-number">250+</h3>
+                    <p class="stat-label">Завершенных проектов</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number">12</h3>
+                    <p class="stat-label">Лет на рынке</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number">98%</h3>
+                    <p class="stat-label">Довольных клиентов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator" id="calculator">
+        <div class="container">
+            <h2 class="section-title">Калькулятор стоимости</h2>
+            <p class="section-subtitle">Рассчитайте примерную стоимость вашего проекта</p>
+            
+            <div class="calculator__content">
+                <div class="calculator__form">
+                    <div class="form-group">
+                        <label class="form-label">Тип объекта</label>
+                        <div class="calculator__options">
+                            <div class="option-card active" data-type="apartment" data-price="7000">
+                                <div class="option-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                                        <line x1="15" y1="3" x2="15" y2="21"></line>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="3" y1="15" x2="21" y2="15"></line>
+                                    </svg>
+                                </div>
+                                <h4>Квартира</h4>
+                                <p class="option-price">7 000 ₽/м²</p>
+                            </div>
+                            <div class="option-card" data-type="house" data-price="10000">
+                                <div class="option-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                </div>
+                                <h4>Дом</h4>
+                                <p class="option-price">10 000 ₽/м²</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="area-input">Площадь объекта (м²)</label>
+                        <input 
+                            type="number" 
+                            id="area-input" 
+                            class="form-input calculator-input" 
+                            placeholder="Введите площадь в м²" 
+                            min="1"
+                            value="">
+                    </div>
+
+                    <div class="calculator__result">
+                        <div class="result-card">
+                            <div class="result-label">Выбранный тип</div>
+                            <div class="result-value" id="selected-type">Квартира</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Площадь</div>
+                            <div class="result-value" id="selected-area">— м²</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Стоимость за м²</div>
+                            <div class="result-value" id="price-per-meter">7 000 ₽</div>
+                        </div>
+                    </div>
+
+                    <div class="calculator__total">
+                        <div class="total-label">Примерная стоимость проекта:</div>
+                        <div class="total-value" id="total-price">0 ₽</div>
+                    </div>
+
+                    <div class="calculator__note">
+                        <p>* Итоговая стоимость может варьироваться в зависимости от сложности проекта, используемых материалов и дополнительных услуг. Для точного расчета оставьте заявку на консультацию.</p>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary btn-large">Получить точный расчет</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <p class="section-subtitle">Полный спектр строительных и ремонтных работ</p>
+            
+            <div class="services__grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Строительство домов</h3>
+                    <p class="service-description">
+                        Возведение коттеджей и загородных домов под ключ. От проектирования до сдачи объекта.
+                    </p>
+                    <ul class="service-features">
+                        <li>Индивидуальные проекты</li>
+                        <li>Качественные материалы</li>
+                        <li>Соблюдение сроков</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                            <line x1="15" y1="3" x2="15" y2="21"></line>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="3" y1="15" x2="21" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт квартир</h3>
+                    <p class="service-description">
+                        Капитальный и косметический ремонт квартир любой сложности с гарантией качества.
+                    </p>
+                    <ul class="service-features">
+                        <li>Дизайн-проект в подарок</li>
+                        <li>Поэтапная оплата</li>
+                        <li>Гарантия 3 года</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Подбор недвижимости</h3>
+                    <p class="service-description">
+                        Помощь в выборе оптимального объекта под ваши требования и бюджет.
+                    </p>
+                    <ul class="service-features">
+                        <li>Анализ рынка</li>
+                        <li>Юридическое сопровождение</li>
+                        <li>Выгодные условия</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Отделочные работы</h3>
+                    <p class="service-description">
+                        Полный комплекс отделочных работ: от черновой до чистовой отделки.
+                    </p>
+                    <ul class="service-features">
+                        <li>Современные технологии</li>
+                        <li>Опытные мастера</li>
+                        <li>Контроль качества</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Дизайн интерьера</h3>
+                    <p class="service-description">
+                        Разработка уникального дизайна с учетом ваших пожеланий и современных трендов.
+                    </p>
+                    <ul class="service-features">
+                        <li>3D-визуализация</li>
+                        <li>Подбор материалов</li>
+                        <li>Авторский надзор</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Проектирование</h3>
+                    <p class="service-description">
+                        Разработка проектной документации с учетом всех строительных норм и требований.
+                    </p>
+                    <ul class="service-features">
+                        <li>Архитектурные решения</li>
+                        <li>Инженерные системы</li>
+                        <li>Согласование документов</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Наши работы</h2>
+            <p class="section-subtitle">Реализованные проекты, которыми мы гордимся</p>
+            
+            <div class="portfolio__grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('дизайн/фото/1.jpg');">
+                        <div class="portfolio-overlay">
+                            <h4>Загородный коттедж</h4>
+                            <p>Московская область • 350 м²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('дизайн/фото/dom10.jpg');">
+                        <div class="portfolio-overlay">
+                            <h4>Квартира в ЖК Премиум</h4>
+                            <p>Москва • 120 м²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('дизайн/фото/21_1.jpg');">
+                        <div class="portfolio-overlay">
+                            <h4>Таунхаус</h4>
+                            <p>Подмосковье • 200 м²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('дизайн/фото/55455.jpg');">
+                        <div class="portfolio-overlay">
+                            <h4>Пентхаус</h4>
+                            <p>Москва-Сити • 180 м²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('дизайн/фото/remont-doma-warshawa.jpg');">
+                        <div class="portfolio-overlay">
+                            <h4>Современная вилла</h4>
+                            <p>Рублевка • 500 м²</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('дизайн/фото/1586415205_1586415189.jpg');">
+                        <div class="portfolio-overlay">
+                            <h4>Квартира-студия</h4>
+                            <p>Центр Москвы • 65 м²</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about__content">
+                <div class="about__text">
+                    <h2 class="section-title">О компании</h2>
+                    <p class="about__description">
+                        KINGROOM - это команда профессионалов с более чем 12-летним опытом работы в сфере строительства 
+                        и ремонта. Мы специализируемся на создании комфортных пространств для жизни, 
+                        реализуя проекты любой сложности от подбора недвижимости до полной отделки под ключ.
+                    </p>
+                    <p class="about__description">
+                        Наша миссия - превращать ваши мечты об идеальном доме в реальность. Мы используем 
+                        только проверенные материалы, современные технологии и индивидуальный подход к каждому клиенту.
+                    </p>
+                    <div class="about__features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h4>Гарантия качества</h4>
+                                <p>3 года гарантии на все виды работ</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h4>Прозрачная смета</h4>
+                                <p>Фиксированная цена без скрытых платежей</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h4>Соблюдение сроков</h4>
+                                <p>Договорные обязательства и пени за просрочку</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about__image">
+                    <div class="about__image-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <p class="section-subtitle">Готовы обсудить ваш проект? Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
+            
+            <div class="contact__content">
+                <form class="contact__form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input">
+                            <option value="">Выберите услугу</option>
+                            <option value="construction">Строительство дома</option>
+                            <option value="renovation">Ремонт квартиры</option>
+                            <option value="selection">Подбор недвижимости</option>
+                            <option value="design">Дизайн интерьера</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <textarea class="form-input" rows="5" placeholder="Расскажите о вашем проекте"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Отправить заявку</button>
+                </form>
+
+                <div class="contact__info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p>+7 (495) 123-45-67</p>
+                            <p>+7 (925) 987-65-43</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@kingroom.ru</p>
+                            <p>sales@kingroom.ru</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>г. Москва, ул. Строителей, д. 15</p>
+                            <p>Пн-Пт: 9:00 - 19:00</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Режим работы</h4>
+                            <p>Понедельник - Пятница: 9:00 - 19:00</p>
+                            <p>Суббота: 10:00 - 16:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__logo">KINGROOM</h3>
+                    <p class="footer__text">
+                        Строительство и ремонт<br>
+                        премиум-класса под ключ
+                    </p>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Услуги</h4>
+                    <ul class="footer__links">
+                        <li><a href="#services">Строительство домов</a></li>
+                        <li><a href="#services">Ремонт квартир</a></li>
+                        <li><a href="#services">Дизайн интерьера</a></li>
+                        <li><a href="#services">Подбор недвижимости</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Компания</h4>
+                    <ul class="footer__links">
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="#contact">Вакансии</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Контакты</h4>
+                    <ul class="footer__links">
+                        <li>+7 (495) 123-45-67</li>
+                        <li>info@kingroom.ru</li>
+                        <li>г. Москва, ул. Строителей, 15</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 KINGROOM. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
