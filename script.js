@@ -31,6 +31,25 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
     }
     
+    // Prevent sections from overlapping
+    const hero = document.querySelector('.hero');
+    const calculator = document.querySelector('.calculator');
+    
+    if (hero && calculator) {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        const calculatorTop = calculator.offsetTop;
+        const currentScrollBottom = currentScroll + window.innerHeight;
+        
+        // Ensure proper layering - calculator should be above hero when scrolling
+        if (currentScrollBottom > heroBottom - 50) {
+            calculator.style.zIndex = '3';
+            hero.style.zIndex = '1';
+        } else {
+            calculator.style.zIndex = '2';
+            hero.style.zIndex = '1';
+        }
+    }
+    
     lastScroll = currentScroll;
 });
 
@@ -283,10 +302,14 @@ function calculateTotal() {
 optionCards.forEach(card => {
     card.addEventListener('click', function() {
         // Remove active class from all cards
-        optionCards.forEach(c => c.classList.remove('active'));
+        optionCards.forEach(c => {
+            c.classList.remove('active');
+            c.style.transform = 'translateZ(0)';
+        });
         
         // Add active class to clicked card
         this.classList.add('active');
+        this.style.transform = 'translateZ(0)';
         
         // Get data from card
         currentType = this.getAttribute('data-type');
@@ -301,6 +324,26 @@ optionCards.forEach(card => {
     });
 });
 
+// Stabilize calculator cards on scroll
+let ticking = false;
+function stabilizeCalculator() {
+    if (!ticking) {
+        requestAnimationFrame(function() {
+            optionCards.forEach(card => {
+                if (card.classList.contains('active')) {
+                    card.style.transform = 'translateZ(0)';
+                } else {
+                    card.style.transform = 'translateZ(0)';
+                }
+            });
+            ticking = false;
+        });
+        ticking = true;
+    }
+}
+
+window.addEventListener('scroll', stabilizeCalculator, { passive: true });
+
 // Area input handler
 if (areaInput) {
     areaInput.addEventListener('input', function() {
@@ -308,6 +351,69 @@ if (areaInput) {
         calculateTotal();
     });
 }
+
+// Handle window resize for better responsive behavior
+let resizeTimer;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+        // Recalculate hero height if needed
+        const hero = document.querySelector('.hero');
+        if (hero && window.innerWidth <= 768) {
+            hero.style.minHeight = window.innerHeight + 'px';
+        }
+        
+        // Close mobile menu on resize
+        const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
+        if (navMenu && navToggle && window.innerWidth > 768) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    }, 250);
+});
+
+// Initialize hero height on load
+window.addEventListener('load', function() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.minHeight = window.innerHeight + 'px';
+    }
+});
+
+// Prevent zoom on double tap (iOS)
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// Handle image loading errors
+document.addEventListener('DOMContentLoaded', function() {
+    const teamImage = document.querySelector('.about__team-image');
+    if (teamImage) {
+        teamImage.addEventListener('error', function() {
+            // If image fails to load, show a placeholder
+            this.style.background = 'linear-gradient(135deg, #2a2520 0%, #1a1510 100%)';
+            this.style.display = 'flex';
+            this.style.alignItems = 'center';
+            this.style.justifyContent = 'center';
+            this.style.color = 'var(--color-text-secondary)';
+            this.style.fontSize = '18px';
+            this.style.textAlign = 'center';
+            this.alt = 'Изображение команды KINGROOM';
+            this.src = ''; // Clear broken src
+        });
+        
+        // Check if image loaded successfully
+        if (teamImage.complete && teamImage.naturalHeight === 0) {
+            teamImage.dispatchEvent(new Event('error'));
+        }
+    }
+});
 
 // Initialize AOS or any animation library if needed
 console.log('KINGROOM website loaded successfully!');
