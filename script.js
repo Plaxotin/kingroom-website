@@ -31,25 +31,6 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
     }
     
-    // Prevent sections from overlapping
-    const hero = document.querySelector('.hero');
-    const calculator = document.querySelector('.calculator');
-    
-    if (hero && calculator) {
-        const heroBottom = hero.offsetTop + hero.offsetHeight;
-        const calculatorTop = calculator.offsetTop;
-        const currentScrollBottom = currentScroll + window.innerHeight;
-        
-        // Ensure proper layering - calculator should be above hero when scrolling
-        if (currentScrollBottom > heroBottom - 50) {
-            calculator.style.zIndex = '3';
-            hero.style.zIndex = '1';
-        } else {
-            calculator.style.zIndex = '2';
-            hero.style.zIndex = '1';
-        }
-    }
-    
     lastScroll = currentScroll;
 });
 
@@ -209,17 +190,7 @@ function animateStats(element, target, hasPlus, hasPercent) {
     update();
 }
 
-// Parallax effect for hero section
-const hero = document.querySelector('.hero');
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = scrolled * 0.5;
-    
-    if (hero) {
-        hero.style.transform = `translateY(${parallax}px)`;
-    }
-});
+// Parallax effect removed to prevent layout issues
 
 // Add hover effect to cards
 document.querySelectorAll('.service-card, .portfolio-item, .info-card').forEach(card => {

@@ -346,18 +346,21 @@ section {
 section {
     padding: var(--section-padding) 0;
     position: relative;
+    /* Ensure proper stacking context */
+    isolation: isolate;
 }
 
 /* Ensure proper spacing between sections */
 .hero {
     margin-bottom: 0;
     position: relative;
+    z-index: 1;
 }
 
 .calculator {
     margin-top: 0;
     position: relative;
-    margin-top: -1px; /* Prevent gap between sections */
+    z-index: 2;
 }
 
 .section-title {
@@ -381,17 +384,6 @@ section {
     position: relative;
     overflow: hidden;
     z-index: 2;
-}
-
-.calculator::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    z-index: -1;
 }
 
 .calculator__content {
@@ -1548,12 +1540,10 @@ textarea.form-input {
 @media screen and (max-width: 768px) {
     .hero {
         padding-bottom: 40px;
-        z-index: 1;
     }
     
     .calculator {
         padding-top: 40px;
-        z-index: 2;
     }
 }
 
