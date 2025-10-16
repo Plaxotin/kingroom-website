@@ -786,13 +786,7 @@ section {
 }
 
 .about__features {
-    margin-top: 64px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    display: none;
 }
 
 .feature-item {
@@ -1098,21 +1092,53 @@ textarea.form-input {
 
     .about__content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 20px;
+    }
+
+    .about__description {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 16px;
     }
 
     .about__features {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        max-width: 100%;
+        display: none;
     }
 
     .feature-item {
-        padding: 18px 24px;
+        padding: 16px 12px;
+        gap: 6px;
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+    }
+
+    .feature-item h4 {
+        font-size: 14px;
+        margin-bottom: 2px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feature-item p {
+        font-size: 11px;
+        line-height: 1.3;
     }
 
     .about__team-image {
         height: 400px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .about__image {
+        margin: 0;
+        padding: 0;
     }
 
     .contact__content {
@@ -1159,6 +1185,23 @@ textarea.form-input {
 
     .total-value {
         font-size: 36px;
+    }
+
+    /* Уменьшаем верхний бар для мобильной версии */
+    .header {
+        height: 60px;
+    }
+
+    .nav {
+        height: 60px;
+    }
+
+    .logo-img {
+        height: 55px;
+    }
+
+    .nav__logo {
+        padding: 8px 0;
     }
 }
 
@@ -1226,13 +1269,23 @@ textarea.form-input {
     }
 
     .calculator__result {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin: 24px 0;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin: 20px 0;
     }
 
     .result-card {
-        padding: 16px;
+        padding: 12px 8px;
+    }
+
+    .result-label {
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+
+    .result-value {
+        font-size: 16px;
+        font-weight: 600;
     }
 
     .total-value {
@@ -1244,7 +1297,8 @@ textarea.form-input {
     }
 
     .services__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
     .portfolio__grid {
@@ -1262,6 +1316,66 @@ textarea.form-input {
         margin-top: 40px;
     }
 
+    .contact__info {
+        gap: 10px;
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+
+    .info-card {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .info-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .info-card h4 {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .info-card p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .about__description {
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+
+    .about__features {
+        display: none;
+    }
+
+    .feature-item {
+        padding: 14px 8px;
+        gap: 4px;
+    }
+
+    .feature-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .feature-item h4 {
+        font-size: 13px;
+        margin-bottom: 1px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feature-item p {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
     .contact .container {
         max-width: 100%;
     }
@@ -1269,6 +1383,80 @@ textarea.form-input {
     .footer__content {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    /* Уменьшаем отступы footer для мобильной версии */
+    .footer {
+        padding: 40px 0 16px;
+    }
+
+    .footer__logo-img {
+        height: 60px;
+        margin-bottom: 12px;
+    }
+
+    .footer__text {
+        margin-bottom: 0;
+    }
+
+    .about__description {
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 12px;
+    }
+
+    .contact__info {
+        gap: 8px;
+        row-gap: 8px;
+        column-gap: 8px;
+    }
+
+    .info-card {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .info-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .info-card h4 {
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
+
+    .info-card p {
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .about__features {
+        display: none;
+    }
+
+    .feature-item {
+        padding: 12px 6px;
+        gap: 3px;
+    }
+
+    .feature-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .feature-item h4 {
+        font-size: 12px;
+        margin-bottom: 1px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feature-item p {
+        font-size: 9px;
+        line-height: 1.1;
     }
 }
 
@@ -1279,15 +1467,16 @@ textarea.form-input {
     }
 
     .nav {
-        height: 70px;
+        height: 60px;
     }
 
     .logo-img {
-        height: 65px;
+        height: 50px;
     }
 
     .nav__logo {
         font-size: 24px;
+        padding: 6px 0;
     }
 
     .hero__title {
@@ -1307,41 +1496,75 @@ textarea.form-input {
     }
 
     .hero__stats {
-        margin-top: 32px;
-        gap: 20px;
+        margin-top: 24px;
+        gap: 16px;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 100%;
     }
 
     .stat-number {
-        font-size: 36px;
+        font-size: 28px;
+        margin-bottom: 4px;
     }
 
     .stat-label {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 1.3;
     }
 
     .calculator__form {
-        padding: 20px;
+        padding: 16px;
+    }
+
+    .calculator__total {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .total-label {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .calculator__note {
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .calculator__note p {
+        font-size: 12px;
+        line-height: 1.4;
     }
 
     .calculator__options {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
     }
 
     .option-card {
-        padding: 20px;
+        padding: 16px 12px;
+        text-align: center;
+    }
+
+    .option-card h4 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .option-price {
+        font-size: 13px;
     }
 
     .option-icon {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 12px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
     }
 
     .option-icon svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
     }
 
     .total-value {
@@ -1353,7 +1576,28 @@ textarea.form-input {
     }
 
     .service-card {
-        padding: 24px;
+        padding: 16px;
+    }
+
+    .service-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+    }
+
+    .service-title {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .service-description {
+        display: none;
+    }
+
+    .service-features li {
+        font-size: 13px;
+        padding: 3px 0;
+        padding-left: 20px;
     }
 
     .portfolio__grid {
@@ -1363,6 +1607,13 @@ textarea.form-input {
 
     .about__team-image {
         height: 300px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .about__image {
+        margin: 0;
+        padding: 0;
     }
 
     .section-title {
@@ -1395,6 +1646,10 @@ textarea.form-input {
         height: 55px;
     }
 
+    .nav__logo {
+        padding: 4px 0;
+    }
+
     .hero__title {
         font-size: 28px;
         line-height: 1.0;
@@ -1413,16 +1668,20 @@ textarea.form-input {
     }
 
     .hero__stats {
-        margin-top: 30px;
-        gap: 20px;
+        margin-top: 20px;
+        gap: 12px;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 100%;
     }
 
     .stat-number {
-        font-size: 32px;
+        font-size: 24px;
+        margin-bottom: 3px;
     }
 
     .stat-label {
-        font-size: 13px;
+        font-size: 11px;
+        line-height: 1.2;
     }
 
     .section-title {
@@ -1441,6 +1700,107 @@ textarea.form-input {
     .btn-large {
         padding: 12px 32px;
         font-size: 15px;
+    }
+
+    .service-card {
+        padding: 12px;
+    }
+
+    .service-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 8px;
+    }
+
+    .service-title {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .service-description {
+        display: none;
+    }
+
+    .service-features li {
+        font-size: 11px;
+        padding: 1px 0;
+        padding-left: 16px;
+    }
+
+    .about__description {
+        font-size: 13px;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+
+    .contact__info {
+        gap: 6px;
+        row-gap: 6px;
+        column-gap: 6px;
+    }
+
+    .info-card {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .info-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .info-card h4 {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+
+    .info-card p {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    .about__features {
+        display: none;
+    }
+
+    .feature-item {
+        padding: 10px 4px;
+        gap: 2px;
+    }
+
+    .feature-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .feature-item h4 {
+        font-size: 11px;
+        margin-bottom: 0;
+        height: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feature-item p {
+        font-size: 8px;
+        line-height: 1.0;
+    }
+
+    /* Уменьшаем отступы footer для мобильной версии */
+    .footer {
+        padding: 32px 0 12px;
+    }
+
+    .footer__logo-img {
+        height: 50px;
+        margin-bottom: 8px;
+    }
+
+    .footer__text {
+        margin-bottom: 0;
+        font-size: 13px;
+        line-height: 1.5;
     }
 }
 
@@ -1475,6 +1835,45 @@ textarea.form-input {
     .btn-large {
         padding: 10px 28px;
         font-size: 14px;
+    }
+
+    .service-features li {
+        font-size: 11px;
+        padding: 1px 0;
+        padding-left: 16px;
+    }
+
+    .about__description {
+        font-size: 12px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
+
+    /* Убираем отступы у фото офиса */
+    .about__team-image {
+        margin: 0;
+        padding: 0;
+    }
+
+    .about__image {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Уменьшаем отступы footer для мобильной версии */
+    .footer {
+        padding: 28px 0 10px;
+    }
+
+    .footer__logo-img {
+        height: 45px;
+        margin-bottom: 6px;
+    }
+
+    .footer__text {
+        margin-bottom: 0;
+        font-size: 12px;
+        line-height: 1.4;
     }
 }
 
@@ -1523,8 +1922,20 @@ textarea.form-input {
     }
 
     .hero__stats {
-        margin: 30px auto 0;
-        gap: 20px;
+        margin: 16px auto 0;
+        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 100%;
+    }
+
+    .stat-number {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+        line-height: 1.1;
     }
 
     .hero__buttons {
@@ -1563,11 +1974,39 @@ textarea.form-input {
 
     .nav__logo {
         font-size: 20px;
+        padding: 2px 0;
     }
 
     .nav__toggle span {
         width: 24px;
         height: 2px;
+    }
+
+    /* Убираем отступы у фото офиса */
+    .about__team-image {
+        margin: 0;
+        padding: 0;
+    }
+
+    .about__image {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Уменьшаем отступы footer для мобильной версии */
+    .footer {
+        padding: 24px 0 8px;
+    }
+
+    .footer__logo-img {
+        height: 40px;
+        margin-bottom: 4px;
+    }
+
+    .footer__text {
+        margin-bottom: 0;
+        font-size: 11px;
+        line-height: 1.3;
     }
 }
 
